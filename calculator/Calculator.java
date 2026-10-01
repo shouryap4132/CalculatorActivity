@@ -1,73 +1,45 @@
 package calculator;
 
-import java.util.Scanner;
-
 public class Calculator {
+    private double number1;
+    private double number2;
 
-    // Basic Operations
-    public double add(double a, double b) {
-        return a + b;
+    // Setters
+    public void setNumber1(double number1) {
+        this.number1 = number1;
     }
 
-    public double subtract(double a, double b) {
-        return a - b;
+    public void setNumber2(double number2) {
+        this.number2 = number2;
     }
 
-    public double multiply(double a, double b) {
-        return a * b;
+    // Getters for numbers
+    public double getNumber1() {
+        return number1;
     }
 
-    public double divide(double a, double b) {
-        if (b == 0) {
+    public double getNumber2() {
+        return number2;
+    }
+
+    // Operations
+    public double getAddition() {
+        return number1 + number2;
+    }
+
+    public double getSubtraction() {
+        return number1 - number2;
+    }
+
+    public double getMultiplication() {
+        return number1 * number2;
+    }
+
+    public double getDivision() {
+        if (number2 == 0) {
             System.out.println("Error: Division by zero is not allowed.");
             return Double.NaN;
         }
-        return a / b;
-    }
-
-    // Encapsulated UI Method
-    public void start() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("=== Java Calculator ===");
-        System.out.print("Enter first number: ");
-        double num1 = scanner.nextDouble();
-
-        System.out.print("Enter an operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);
-
-        System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();
-
-        double result = 0;
-        boolean validOperation = true;
-
-        switch (operator) {
-            case '+':
-                result = add(num1, num2);
-                break;
-            case '-':
-                result = subtract(num1, num2);
-                break;
-            case '*':
-                result = multiply(num1, num2);
-                break;
-            case '/':
-                result = divide(num1, num2);
-                if (Double.isNaN(result)) {
-                    validOperation = false;
-                }
-                break;
-            default:
-                System.out.println("Error: Invalid operator.");
-                validOperation = false;
-                break;
-        }
-
-        if (validOperation) {
-            System.out.printf("Result: %.2f %c %.2f = %.2f%n", num1, operator, num2, result);
-        }
-
-        scanner.close();
+        return number1 / number2;
     }
 }
